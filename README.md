@@ -6,8 +6,8 @@ The template is used in this semester in masters course "Functional Programming 
 
 ## Requirements
 
-* [dotnet SDK](https://www.microsoft.com/net/download/core) v8.0 or higher
-* [node.js](https://nodejs.org) v18+ LTS
+* [dotnet SDK](https://www.microsoft.com/net/download/core) v10.0 or higher
+* [node.js](https://nodejs.org) v22+ LTS
 
 
 ## Editor
