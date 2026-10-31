@@ -1,6 +1,7 @@
 ﻿namespace PolygonDrawing
 
 open FsCheck
+open FsCheck.FSharp
 open Expecto
 
 module Tests =
@@ -16,7 +17,7 @@ module Tests =
 
     type Overrides() =
        static member Float() =
-            Arb.Default.Float()
+            ArbMap.defaults |> ArbMap.arbitrary<float>
             |> Arb.filter (fun f -> not <| System.Double.IsNaN(f) &&
                                     not <| System.Double.IsInfinity(f) &&
                                     f <> -0.0) 
@@ -33,7 +34,7 @@ module Tests =
 
         let test() =
             for m in applicationStates do
-                FsCheck.Check.One( { Config.Default with Arbitrary = [typeof<Overrides>]; }, undoUndoes m )
+                FsCheck.Check.One( Config.Default.WithArbitrary([typeof<Overrides>]), undoUndoes m )
             
 
     let config = 
